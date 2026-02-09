@@ -9,4 +9,14 @@ document.getElementById("confirmar").addEventListener("click", function () {
 
   mensagem.textContent = "Obrigado! Nos vemos lá!";
   som.play();
+
+  // 🚀 ENVIA EMAIL
+  emailjs.send("service_zb8c1ko", "template_ngkst3p", {
+    mensagem: "Uma nova pessoa confirmou presença no evento!"
+  })
+  .then(function(response) {
+     console.log("Email enviado com sucesso!", response.status, response.text);
+  }, function(error) {
+     console.log("Erro ao enviar email:", error);
+  });
 });
